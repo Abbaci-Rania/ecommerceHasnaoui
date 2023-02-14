@@ -1,0 +1,135 @@
+ .pagedetails{
+    margin: 50px;
+}
+
+/*------------- Cart Total------------*/
+.livraison {
+  width: 30%;
+  height: 150px;
+  border-radius: 3px;
+  float: right;
+}
+
+.livraison h2 {
+  font-size: 15px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgb(3 0 71 / 9%);
+  padding-bottom: 10px;
+  color: #000;
+  font-weight: 200;
+  text-transform: uppercase;
+}
+.livraison .d_flex{
+  padding-left: 10px;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgb(3 0 71 / 9%);
+  padding: 0 10px;
+}
+.livraison p {
+  font-size: 12px;
+  font-weight: 400;
+  padding: 20px 0;
+  padding-right: 10px;
+}
+.livraison img{
+  width: 30%;
+}
+.livraison :last-child{
+  border-bottom: transparent;
+}
+
+/* --------------- productDetails --------------- */
+
+.productDetails{
+  width: auto;
+  color: black;
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 30px;
+  box-shadow: rgba(38, 30, 182, 0.09) 0px 1px 3px;
+}
+
+.img img{
+  width: 260px;
+  margin-right: 20px;
+}
+.cart-details p{
+  background-color: rgb(27	,148	,118);
+  height: max-content;
+  width: max-content;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 10px;
+  padding: 3px 10px;
+  font-weight: 100;
+  margin-bottom: 3px;
+}
+.cart-details{
+  padding: 10px 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgb(3 0 71 / 9%);
+}
+
+.prix .btn-confirm{
+  color: #fff;
+  background-color: #61CE70;
+  border-radius: 3px;
+  width: 90%;
+  height: max-content;
+  padding:10px;
+  font-size: 15px;
+  font-weight: 200;
+  text-transform: uppercase;  
+  box-shadow: 0px 0px 10px  rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  margin-left:17px;
+  margin-top: 5%;
+} 
+.prix .btn-confirm:hover{
+  background-color: #61ce70da;
+}
+.prix i{
+  padding-right: 10px; 
+}
+.productDetails .prix{
+  bottom: 10px;
+}
+.cart-details i{
+ color: #61CE70;
+ font-weight: 300;
+ font-size: 20px;
+ cursor: pointer;
+}
+
+.cart-details i:active{
+  color: #61CE70;
+  font-weight: 600;
+}
+
+.stars i{
+  font-weight: 600;
+  color: #e7e724;
+}
+.stars i:nth-child(4),.stars i:nth-child(5){
+  font-weight: 600;
+  color: #bebebc;
+}
+
+
+
+.prix > p {
+  display: flex;
+  justify-content: space-between;
+  color: #000;
+  font-weight: 700;
+  font-size: larger ;
+  margin-top: 10px;
+}
+.prix span{
+  color: rgb(197, 17, 17);
+  font-size:12px;
+  font-weight: 100;
+  
+}

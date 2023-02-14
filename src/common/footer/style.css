@@ -1,0 +1,30 @@
+footer {
+  background: #54595F;
+  display: flex;
+  align-items: center;
+  height: max-content;
+ 
+}
+.hm-footer-social{
+  float: right;
+  margin-top: 30px;
+}
+.footer-social{
+  margin-right: -20px;
+}
+.hm-footer-social p{
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  padding-bottom: 10px;
+}
+.footer-social a i {
+  color: #fff;
+  margin-right:30px;
+  -webkit-transition: .3s; 
+  -moz-transition:.3s; 
+  -ms-transition:.3s; 
+  -o-transition:.3s;
+  transition: .3s;
+}
+.footer-social i:hover{color: #61CE70;}

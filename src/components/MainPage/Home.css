@@ -1,0 +1,136 @@
+.box .left{
+  width: 70%;
+}
+.box .right{
+  width: 30%;
+}
+.homeSlide{ 
+  background-color: #C7DBC2;
+  border-radius: 5px;
+  height: 400px;
+  margin-top: 30px;
+  box-shadow: 0px 0px 10px  rgba(0, 0, 0, 0.2);
+  width: 10%;
+}
+.homeSlide img{
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  box-sizing: border-box;
+  float: right;
+}
+.homeSlide h4 {
+  color: rgb(15, 93, 133);
+  font-size: 24px;
+  font-weight: 500;
+  padding-left: 20px;
+}
+.homeSlide h2 {
+  font-size: 40px;
+  color: #000;
+  font-weight: 500;
+  margin: 20px 0 22px;
+  max-width: 550px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-left: 20px;
+}
+.homeSlide p {
+  margin: 20px 0;
+  padding-left: 20px;
+  width: 80%;
+}
+/*SliderIndicator*/
+.homeSlide ul {
+  position: absolute;
+  bottom: -30%;
+}
+.homeSlide ul li button {
+  background: transparent !important;
+  color: transparent !important;
+}
+.homeSlide ul li button::before {
+  font-size: 10px !important;
+  color:  #61CE70;
+  position: absolute;
+  top: -60px;
+  left: -4px;
+  margin: auto;
+}
+
+/*---------category----------*/
+.contentWidth {
+  width: 60%;
+}
+.category {
+  margin-top: 30px;
+}
+.category span {
+  margin: 10px 20px;
+  text-transform: capitalize;
+}
+.category .box {
+  transition: 0.5s;
+  padding: 0 20px;
+}
+.category .box:hover {
+  background-color: #ffe1e6;
+  cursor: pointer;
+}
+.article{
+  background-color: #fff;
+  width: 220px;
+  height: 195px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px  rgba(0, 0, 0, 0.2);
+
+}
+.article:first-child{
+  background-color: rgba( 	244	,235	,214, 0.5);
+}
+.article:last-child{
+  margin-top: 10px;
+  background-color: 	rgba(139	,213	,158,0.5);
+}
+.category:first-child .article:first-child{
+  background-color: rgba( 	27	,148	,118,0.5);
+}
+.category:first-child .article:last-child{
+  background-color:rgba( 	18,	70,	96, 0.5);
+} 
+/*-----------Category-----------*/
+
+.btn-cart{
+  width: 170px;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  display: inline-block;
+  -webkit-transition: 0.3s linear; 
+  -moz-transition: 0.3s linear; 
+  -ms-transition: 0.3s linear; 
+  -o-transition: 0.3s linear; 
+  transition: 0.3s linear;
+  color: #124660;
+  background: transparent;
+  border: transparent;
+  margin-left: 20px;
+}
+.btn-cart:hover{
+  background: transparent;
+  color: #124660;
+  border: 1px solid #124660;
+}
+
+
+
+.category img{
+  width: 100%;
+  height:100%;
+  float: right;
+}
+
+
