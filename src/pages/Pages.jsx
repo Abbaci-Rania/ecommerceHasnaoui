@@ -7,8 +7,8 @@ const Pages = ({ productItems, addToCart }) => {
   return (
     <>
       <Home />
-      <StockLimite productItems={productItems} addToCart={addToCart} />
-      <OffrePromo productItems={productItems} addToCart={addToCart} />
+      {/* <StockLimite productItems={productItems} addToCart={addToCart} />
+      <OffrePromo productItems={productItems} addToCart={addToCart} /> */}
     </>
   );
 };
