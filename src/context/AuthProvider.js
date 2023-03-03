@@ -20,14 +20,16 @@ export const AuthProvider = ({ children }) => {
 
   let loginUser = async (e) => {
     e.preventDefault();
+
     let response = await fetch("http://localhost:8000/api/token/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        username: e.target.username.value,
+        email: e.target.email.value,
         password: e.target.password.value,
       }),
     });
+
     let data = await response.json();
     if (response.status === 200) {
       setAuthTokens(data); //this state is used to check if the user is still loggedIn
@@ -43,7 +45,7 @@ export const AuthProvider = ({ children }) => {
     setAuthTokens(null);
     setUser(null);
     localStorage.removeItem("authTokens");
-    History.push("/connexion");
+    //History.push("/connexion");
   };
 
   let updateToken = async () => {

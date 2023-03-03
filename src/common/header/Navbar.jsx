@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown";
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-
+import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 const Navbar = ({ CartItem }) => {
   //userInfo
   const { user, logoutUser } = useContext(AuthContext);
@@ -29,6 +29,12 @@ const Navbar = ({ CartItem }) => {
       document.removeEventListener("mousedown", handler);
     };
   });
+
+  const [showMenu, setShowMenu] = useState(false);
+
+  function handleClick() {
+    setShowMenu(!showMenu);
+  }
 
   return (
     <>
@@ -75,23 +81,51 @@ const Navbar = ({ CartItem }) => {
           </div>
 
           <div className="icon f_flex width">
-            <Link to="/">
-              <i className="fa fa-question-circle"></i>
-            </Link>
-
+            {user ? (
+              <div className="dropdown">
+                <button onClick={handleClick} className="icon-button">
+                  <i className="fa fa-plus"></i>
+                </button>
+                {showMenu ? (
+                  <div className="menu-items">
+                    <ul>
+                      <li>
+                        <i className="fa fa-user-secret"></i>
+                        <p>Mon Compte</p>
+                      </li>
+                      <li>
+                        <i className="fa fa-shopping-bag"></i>
+                        <p>Mes commande</p>
+                      </li>
+                      <li>
+                        <i className="fa fa fa-truck" />
+                        <p>Etat de ma commande</p>
+                      </li>
+                    </ul>
+                  </div>
+                ) : null}
+                {/* <Link to="/">
+                <i className="fa fa-plus"></i>
+              </Link> */}
+              </div>
+            ) : (
+              <></>
+            )}
             {/* <i className="fa fa-user"></i> */}
             {user ? (
-              <p onClick={logoutUser}>Logout</p>
+              <div className="icon-react">
+                <FaSignOutAlt onClick={logoutUser} />
+              </div>
             ) : (
               <Link to="/connexion">
-                <i className="fa fa-user"></i>
+                <div className="icon-react">
+                  <FaSignInAlt />
+                </div>
               </Link>
             )}
-            {user && <p>Hello {user.username} </p>}
-
             <div className="cart">
               <Link to="/cart">
-                <i className="fa fa-shopping-bag"></i>
+                <i className="fa fa-shopping-cart"></i>
                 <span>{CartItem.length === 0 ? "0" : CartItem.length}</span>
               </Link>
             </div>

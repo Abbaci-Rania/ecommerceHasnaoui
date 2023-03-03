@@ -16,6 +16,7 @@ import HeaderWrapper from "./common/header/HeaderWrapper";
 function App() {
   const { productItems } = Data;
   const [CartItem, setCartItem] = useState([]);
+
   const addToCart = (product) => {
     const productExit = CartItem.find((item) => item.id === product.id);
     if (productExit) {

@@ -16,10 +16,11 @@ const Login = () => {
       <form className="form-signin">
         <h1 className="h3 mb-3 fw-normal">Connexion</h1>
         <input
-          name="username"
+          type="email"
+          name="email"
           className="form-control"
           placeholder="Saisir votre email"
-          required
+
           // onChange={(e) => setemail(e.target.value)}
         />
         <br />
@@ -27,7 +28,6 @@ const Login = () => {
           type="password"
           name="password"
           className="form-control"
-          id="floatingPassword"
           placeholder="Password"
           // onChange={(e) => setpassword(e.target.value)}
         />

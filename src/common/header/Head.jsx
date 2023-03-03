@@ -1,17 +1,17 @@
-import React from "react"
+import React from "react";
 
 const Head = () => {
   return (
     <>
-      <section className='head'>
-        <div className='container d_flex'>
-          <div className='left row'>
-            <i className='fa fa-phone'></i>
+      <section className="head">
+        <div className="container d_flex">
+          <div className="left row">
+            <i className="fa fa-phone"></i>
             <label> +213 044 766 982</label>
-            <i className='fa fa-envelope'></i>
+            <i className="fa fa-envelope"></i>
             <label> hasnaouigsh@gmail.com</label>
           </div>
-          <div className='right row RText'>
+          <div className="right row RText">
             <span>🇸🇦</span>
             <label>AR</label>
             <span>🇫🇷</span>
@@ -20,7 +20,7 @@ const Head = () => {
         </div>
       </section>
     </>
-  )
-}
+  );
+};
 
-export default Head
+export default Head;
