@@ -6,7 +6,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = ({ CartItem }) => {
   //userInfo
-  const { name } = useContext(AuthContext);
+  const { user, logoutUser } = useContext(AuthContext);
 
   // fixed Header
   window.addEventListener("scroll", function () {
@@ -78,11 +78,17 @@ const Navbar = ({ CartItem }) => {
             <Link to="/">
               <i className="fa fa-question-circle"></i>
             </Link>
-            <Link to="/connexion">
-              {" "}
-              <i className="fa fa-user"></i>
-              <p>Hello {name} </p>
-            </Link>
+
+            {/* <i className="fa fa-user"></i> */}
+            {user ? (
+              <p onClick={logoutUser}>Logout</p>
+            ) : (
+              <Link to="/connexion">
+                <i className="fa fa-user"></i>
+              </Link>
+            )}
+            {user && <p>Hello {user.username} </p>}
+
             <div className="cart">
               <Link to="/cart">
                 <i className="fa fa-shopping-bag"></i>

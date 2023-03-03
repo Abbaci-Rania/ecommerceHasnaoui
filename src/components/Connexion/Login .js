@@ -1,10 +1,9 @@
 import React, { useContext, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "./style.css";
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import Header from "../../common/header/Header";
 
 const Login = () => {
   const [email, setemail] = useState("");
@@ -12,12 +11,8 @@ const Login = () => {
   const [redirect, setredirect] = useState(false);
   let { loginUser } = useContext(AuthContext);
 
-  const location = useLocation();
-  const showNavbar = location.pathname !== "/connexion";
-  console.log(showNavbar);
   return (
     <div className="form" onSubmit={loginUser}>
-      {showNavbar && <Header />}
       <form className="form-signin">
         <h1 className="h3 mb-3 fw-normal">Connexion</h1>
         <input
@@ -25,7 +20,7 @@ const Login = () => {
           className="form-control"
           placeholder="Saisir votre email"
           required
-          onChange={(e) => setemail(e.target.value)}
+          // onChange={(e) => setemail(e.target.value)}
         />
         <br />
         <input
@@ -34,14 +29,15 @@ const Login = () => {
           className="form-control"
           id="floatingPassword"
           placeholder="Password"
-          onChange={(e) => setpassword(e.target.value)}
+          // onChange={(e) => setpassword(e.target.value)}
         />
         <br />
         <button className="w-100 btn btn-lg btn-primary" type="submit">
           Connexion
         </button>
         <br></br>
-        <Link to="/register">Creer un compte</Link>
+        <Link to="/register">Creer un compte</Link> <br />
+        <Link to="/">Retour</Link>
       </form>
     </div>
   );
