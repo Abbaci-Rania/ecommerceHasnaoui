@@ -40,9 +40,9 @@ const FlashCard = ({ productItems, addToCart }) => {
   return (
     <>
       <Slider {...settings}>
-        {productItems.map((productItems) => {
+        {productItems.map((productItems, index) => {
           return (
-            <Link to={`/detail/${productItems.id}`}>
+            <Link to={`/detail/${productItems.id}`} key={index}>
               <div className="box">
                 <div className="productSlider mtop">
                   <div className="img">
@@ -55,11 +55,11 @@ const FlashCard = ({ productItems, addToCart }) => {
                     <h3>{productItems.name}</h3>
                     <div className="price">
                       <h4>{productItems.price}.00 DA</h4>
-                      <Link to="/">
-                        <button onClick={() => addToCart(productItems)}>
-                          <i className="fa fa-plus"></i>
-                        </button>
-                      </Link>
+                      {/* <Link to="/"> */}
+                      <button onClick={() => addToCart(productItems)}>
+                        <i className="fa fa-plus"></i>
+                      </button>
+                      {/* </Link> */}
                     </div>
                   </div>
                 </div>

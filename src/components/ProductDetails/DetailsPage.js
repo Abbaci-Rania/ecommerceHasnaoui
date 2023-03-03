@@ -10,9 +10,9 @@ const DetailsPage = () => {
   const id = params.id;
   return (
     <section className="pagedetails">
-      {productItems.map((productItems) => {
+      {productItems.map((productItems, index) => {
         return productItems.id == id ? (
-          <div className="container d_flex">
+          <div className="container d_flex" key={index}>
             <div className="productDetails d_flex ">
               <div className="img">
                 <img src={productItems.cover} alt="" />
@@ -48,7 +48,7 @@ const DetailsPage = () => {
             </div>
           </div>
         ) : (
-          <></>
+          <div key={index}></div>
         );
       })}
     </section>

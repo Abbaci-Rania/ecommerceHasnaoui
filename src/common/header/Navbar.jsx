@@ -1,9 +1,13 @@
 import logo from "../../assets/images/logo/gsh.png";
 import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = ({ CartItem }) => {
+  //userInfo
+  const { name } = useContext(AuthContext);
+
   // fixed Header
   window.addEventListener("scroll", function () {
     const navbar = document.querySelector(".navbar");
@@ -25,6 +29,7 @@ const Navbar = ({ CartItem }) => {
       document.removeEventListener("mousedown", handler);
     };
   });
+
   return (
     <>
       <section className="navbar">
@@ -73,9 +78,10 @@ const Navbar = ({ CartItem }) => {
             <Link to="/">
               <i className="fa fa-question-circle"></i>
             </Link>
-            <Link to="/">
+            <Link to="/connexion">
               {" "}
               <i className="fa fa-user"></i>
+              <p>Hello {name} </p>
             </Link>
             <div className="cart">
               <Link to="/cart">

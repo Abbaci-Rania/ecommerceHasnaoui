@@ -7,6 +7,11 @@ import Data from "./components/StockLimite/Data";
 import Footer from "./common/footer/Footer";
 import Cart from "./common/Cart/Cart";
 import DetailsPage from "./components/ProductDetails/DetailsPage";
+import Login from "./components/Connexion/Login ";
+import Register from "./components/Connexion/Register";
+import PrivateRoute from "./utils/PrivateRoute";
+import { AuthProvider } from "./context/AuthProvider";
+import HeaderWrapper from "./common/header/HeaderWrapper";
 
 function App() {
   const { productItems } = Data;
@@ -43,23 +48,35 @@ function App() {
   return (
     <>
       <Router>
-        <Header CartItem={CartItem} />
-        <Switch>
-          <Route path="/" exact>
-            <Pages productItems={productItems} addToCart={addToCart} />
-          </Route>
-          <Route path="/cart" exact>
-            <Cart
-              CartItem={CartItem}
-              addToCart={addToCart}
-              decreaseQty={decreaseQty}
-            />
-          </Route>
-          <Route path="/detail/:id" exact>
-            <DetailsPage />
-          </Route>
-        </Switch>
-        {/* <Footer /> */}
+        <AuthProvider>
+          <HeaderWrapper CartItem={CartItem} />
+          <Switch>
+            <Route exact path="/">
+              <Pages productItems={productItems} addToCart={addToCart} />
+            </Route>
+            {/* <PrivateRoute path="/" exact>
+              <Pages productItems={productItems} addToCart={addToCart} />
+            </PrivateRoute> */}
+            <Route exact path="/connexion">
+              <Login />
+            </Route>
+
+            <Route exact path="/register">
+              <Register />
+            </Route>
+            <Route exact path="/cart">
+              <Cart
+                CartItem={CartItem}
+                addToCart={addToCart}
+                decreaseQty={decreaseQty}
+              />
+            </Route>
+            <Route exact path="/detail/:id">
+              <DetailsPage />
+            </Route>
+          </Switch>
+          {/* <Footer /> */}
+        </AuthProvider>
       </Router>
     </>
   );
