@@ -1,7 +1,11 @@
 import React from "react";
-import "style.css";
+import "./style.css";
 const EditProfile = () => {
-  return <div></div>;
+  return (
+    <div className="edit">
+      <p>Edit Profile</p>
+    </div>
+  );
 };
 
 export default EditProfile;

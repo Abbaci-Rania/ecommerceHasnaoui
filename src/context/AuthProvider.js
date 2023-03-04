@@ -29,13 +29,16 @@ export const AuthProvider = ({ children }) => {
         password: e.target.password.value,
       }),
     });
-
     let data = await response.json();
+
     if (response.status === 200) {
       setAuthTokens(data); //this state is used to check if the user is still loggedIn
       setUser(jwt_decode(data.access)); //decode a token and give us the object user
       localStorage.setItem("authTokens", JSON.stringify(data));
-      History.push("/");
+      if (data.type === "particulier") History.push("/");
+      else if (data.type == "groupe") History.push("/edit");
+      else if (data.type == "comercial") History.push("/cart");
+      else if (data.type == "admin") History.push("/cart");
     } else {
       alert("LoginUser Fail");
     }
@@ -45,7 +48,7 @@ export const AuthProvider = ({ children }) => {
     setAuthTokens(null);
     setUser(null);
     localStorage.removeItem("authTokens");
-    //History.push("/connexion");
+    History.push("/connexion");
   };
 
   let updateToken = async () => {

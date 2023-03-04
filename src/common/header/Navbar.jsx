@@ -85,6 +85,7 @@ const Navbar = ({ CartItem }) => {
               <div className="dropdown">
                 <button onClick={handleClick} className="icon-button">
                   <i className="fa fa-plus"></i>
+                  {/* {user && <p>Hello {user.username}</p>} */}
                 </button>
                 {showMenu ? (
                   <div className="menu-items">

@@ -12,6 +12,7 @@ import Register from "./components/Connexion/Register";
 import PrivateRoute from "./utils/PrivateRoute";
 import { AuthProvider } from "./context/AuthProvider";
 import HeaderWrapper from "./common/header/HeaderWrapper";
+import EditProfile from "./components/EditProfile/EditProfile";
 
 function App() {
   const { productItems } = Data;
@@ -74,6 +75,9 @@ function App() {
             </Route>
             <Route exact path="/detail/:id">
               <DetailsPage />
+            </Route>
+            <Route exact path="/edit">
+              <EditProfile />
             </Route>
           </Switch>
           {/* <Footer /> */}

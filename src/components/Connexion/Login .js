@@ -6,9 +6,6 @@ import { Redirect } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 const Login = () => {
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
-  const [redirect, setredirect] = useState(false);
   let { loginUser } = useContext(AuthContext);
 
   return (
@@ -20,8 +17,6 @@ const Login = () => {
           name="email"
           className="form-control"
           placeholder="Saisir votre email"
-
-          // onChange={(e) => setemail(e.target.value)}
         />
         <br />
         <input
@@ -29,7 +24,6 @@ const Login = () => {
           name="password"
           className="form-control"
           placeholder="Password"
-          // onChange={(e) => setpassword(e.target.value)}
         />
         <br />
         <button className="w-100 btn btn-lg btn-primary" type="submit">
@@ -41,18 +35,6 @@ const Login = () => {
       </form>
     </div>
   );
-  // const submit = async (e) => {
-  //   e.preventDefault();
-  //   const response = await fetch("http://localhost:8000/users/login", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     credentials: "include",
-  //     body: JSON.stringify({ email, password }),
-  //   });
-  //   console.log(response.status);
-  //   if (response.status != 403) setredirect(true);
-  // };
-  // if (redirect) return <Redirect to="/cart" />;
 };
 
 export default Login;
