@@ -25,8 +25,6 @@ const SamplePrevArrow = (props) => {
   );
 };
 const FlashCard = ({ productItems, addToCart }) => {
-  const [count, setCount] = useState(0);
-
   const settings = {
     dots: false,
     infinite: true,
@@ -36,35 +34,34 @@ const FlashCard = ({ productItems, addToCart }) => {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
-
+  const [count, setCount] = useState(0);
+  const increment = () => {
+    setCount(count + 1);
+  };
   return (
     <>
       <Slider {...settings}>
-        {productItems.map((productItems, index) => {
+        {productItems.map((productItems) => {
           return (
-            <Link to={`/detail/${productItems.id}`} key={index}>
-              <div className="box">
-                <div className="productSlider mtop">
-                  <div className="img">
-                    <span className="discount">
-                      {productItems.discount}% Off
-                    </span>
-                    <img src={productItems.cover} alt="" />
-                  </div>
-                  <div className="product-details">
+            <div className="box">
+              <div className="product mtop">
+                <div className="img">
+                  <span className="discount">{productItems.discount}% Off</span>
+                  <img src={productItems.cover} alt="" />
+                </div>
+                <div className="product-details">
+                  <Link to="/detail">
                     <h3>{productItems.name}</h3>
-                    <div className="price">
-                      <h4>{productItems.price}.00 DA</h4>
-                      {/* <Link to="/"> */}
-                      <button onClick={() => addToCart(productItems)}>
-                        <i className="fa fa-plus"></i>
-                      </button>
-                      {/* </Link> */}
-                    </div>
+                  </Link>
+                  <div className="price">
+                    <h4>{productItems.price}.00 DA</h4>
+                    <button onClick={() => addToCart(productItems)}>
+                      <i className="fa fa-plus"></i>
+                    </button>
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
           );
         })}
       </Slider>

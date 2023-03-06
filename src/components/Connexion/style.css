@@ -22,6 +22,7 @@
     background-color: #61CE64;
     color: #fff;
     cursor: pointer;
+    margin-top: 10px;
   }
   .form-signin a{
     color: #000000;
@@ -31,3 +32,10 @@
   .form-signin ::placeholder{
     color: #a3a3a3d8;
   }
+#client{
+  
+}
+input[type='radio']{
+  margin-left: 20px;
+  margin-right: 5px;
+}

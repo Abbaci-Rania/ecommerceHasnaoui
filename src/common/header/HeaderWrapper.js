@@ -5,7 +5,12 @@ const HeaderWrapper = ({ CartItem }) => {
   const location = useLocation();
 
   // Only show the navbar on certain routes
-  if (location.pathname === "/connexion" || location.pathname === "/register") {
+  if (
+    location.pathname === "/connexion" ||
+    location.pathname === "/register" ||
+    location.pathname === "/comercial" ||
+    location.pathname === "/admin"
+  ) {
     return null;
   }
 

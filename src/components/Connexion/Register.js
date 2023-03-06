@@ -45,6 +45,7 @@ const Register = () => {
           name="email"
           className="form-control"
           placeholder="Saisir votre email"
+          required
           onChange={(e) => setemail(e.target.value)}
         />
         <br />
@@ -52,15 +53,14 @@ const Register = () => {
           type="password"
           name="password"
           className="form-control"
-          id="floatingPassword"
           placeholder="Password"
+          required
           onChange={(e) => setpassword(e.target.value)}
         />{" "}
         <br />
         <input
           type="text"
           className="form-control"
-          id="floatingPassword"
           placeholder="Phone number"
           name="phone"
           onChange={(e) => setphone(e.target.value)}
@@ -69,16 +69,18 @@ const Register = () => {
         <input
           type="radio"
           id="client"
-          name="is_client_particulier"
+          name="client"
           value="is_client_particulier"
           onChange={(e) => setclientParticulier(true)}
+          required
         />
-          <label for="is_client_particulier">Particulier</label>
+        <label for="is_client_particulier">Particulier</label>
         <input
           type="radio"
           id="client"
-          name="is_client_groupe"
+          name="client"
           value="is_client_groupe"
+          required
           onChange={(e) => setclientGroupe(true)}
         />
         <label for="is_client_groupe">Groupe</label>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Header from "./common/header/Header";
+
 import Pages from "./pages/Pages";
 import Data from "./components/StockLimite/Data";
 import Footer from "./common/footer/Footer";
@@ -13,6 +13,8 @@ import PrivateRoute from "./utils/PrivateRoute";
 import { AuthProvider } from "./context/AuthProvider";
 import HeaderWrapper from "./common/header/HeaderWrapper";
 import EditProfile from "./components/EditProfile/EditProfile";
+import DashboardAdmin from "./admin/components/DashboardAdmin";
+import DashboardComercial from "./comercial/components/DashboardComercial";
 
 function App() {
   const { productItems } = Data;
@@ -78,6 +80,12 @@ function App() {
             </Route>
             <Route exact path="/edit">
               <EditProfile />
+            </Route>
+            <Route exact path="/admin">
+              <DashboardAdmin />
+            </Route>
+            <Route exact path="/comercial">
+              <DashboardComercial />
             </Route>
           </Switch>
           {/* <Footer /> */}

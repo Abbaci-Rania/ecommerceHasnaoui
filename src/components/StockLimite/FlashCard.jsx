@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
+import { Link } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -37,15 +38,17 @@ const FlashCard = ({ productItems, addToCart }) => {
   return (
     <>
       <Slider {...settings}>
-        {productItems.map((productItems, index) => {
+        {productItems.map((productItems) => {
           return (
-            <div className="box" key={index}>
+            <div className="box">
               <div className="product mtop">
                 <div className="img">
                   <img src={productItems.cover} alt="" />
                 </div>
                 <div className="product-details">
-                  <h3>{productItems.name}</h3>
+                  <Link to="/detail">
+                    <h3>{productItems.name}</h3>
+                  </Link>
                   <h5>Quantité restante: {productItems.qtereste}</h5>
                   <div className="price">
                     <h4>{productItems.price}.00 DA</h4>

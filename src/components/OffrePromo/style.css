@@ -6,3 +6,7 @@
   color: #61CE70;
   font-size: 20px;
 }
+.product-details h3:hover{
+  color: #61CE70;
+  font-weight: 500;
+}

@@ -14,7 +14,7 @@ const DetailsPage = () => {
         return productItems.id == id ? (
           <div className="container d_flex" key={index}>
             <div className="productDetails d_flex ">
-              <div className="img">
+              <div className="product-cover">
                 <img src={productItems.cover} alt="" />
               </div>
               <div className="second-part">

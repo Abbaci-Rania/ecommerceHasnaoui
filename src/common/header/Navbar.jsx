@@ -84,7 +84,10 @@ const Navbar = ({ CartItem }) => {
             {user ? (
               <div className="dropdown">
                 <button onClick={handleClick} className="icon-button">
-                  <i className="fa fa-plus"></i>
+                  <i className="fa fa-user-circle">
+                    {" "}
+                    {user && <p className="icon-name">{user.username}</p>}
+                  </i>
                   {/* {user && <p>Hello {user.username}</p>} */}
                 </button>
                 {showMenu ? (
@@ -92,15 +95,17 @@ const Navbar = ({ CartItem }) => {
                     <ul>
                       <li>
                         <i className="fa fa-user-secret"></i>
-                        <p>Mon Compte</p>
+                        <Link to="/edit">
+                          <p>Mon Compte</p>
+                        </Link>
                       </li>
                       <li>
                         <i className="fa fa-shopping-bag"></i>
                         <p>Mes commande</p>
                       </li>
                       <li>
-                        <i className="fa fa fa-truck" />
-                        <p>Etat de ma commande</p>
+                        <FaSignOutAlt className="react-icon" />
+                        <p onClick={logoutUser}> Déconnexion </p>
                       </li>
                     </ul>
                   </div>
@@ -110,9 +115,13 @@ const Navbar = ({ CartItem }) => {
               </Link> */}
               </div>
             ) : (
-              <></>
+              <Link to="/connexion">
+                <div className="icon-react">
+                  <FaSignInAlt />
+                </div>
+              </Link>
             )}
-            {/* <i className="fa fa-user"></i> */}
+            {/* <i className="fa fa-user"></i>
             {user ? (
               <div className="icon-react">
                 <FaSignOutAlt onClick={logoutUser} />
@@ -123,10 +132,13 @@ const Navbar = ({ CartItem }) => {
                   <FaSignInAlt />
                 </div>
               </Link>
-            )}
+            )} */}
             <div className="cart">
               <Link to="/cart">
-                <i className="fa fa-shopping-cart"></i>
+                <i className="fa fa-shopping-cart">
+                  {" "}
+                  <p className="icon-name">Panier</p>
+                </i>{" "}
                 <span>{CartItem.length === 0 ? "0" : CartItem.length}</span>
               </Link>
             </div>

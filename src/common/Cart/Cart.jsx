@@ -42,6 +42,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
                           >
                             <i className="fa fa-minus"></i>
                           </button>
+
                           <span className="qte">{item.qty}</span>
                           <button
                             className="incCart"
