@@ -13,7 +13,7 @@ const EditProfile = () => {
 
   const submit = async (e) => {
     e.preventDefault();
-    let response = await fetch("http://localhost:8000/polls/edit", {
+    let response = await fetch("http://localhost:8000/partners/edit", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -23,6 +23,7 @@ const EditProfile = () => {
       }),
     });
     let data = await response.json();
+
     if (response.status === 200) {
     }
     setredirect(true);
