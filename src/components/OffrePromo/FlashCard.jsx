@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 const SampleNextArrow = (props) => {
   const { onClick } = props;
   return (
@@ -34,27 +35,44 @@ const FlashCard = ({ productItems, addToCart }) => {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
-  const [count, setCount] = useState(0);
-  const increment = () => {
-    setCount(count + 1);
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/products/getproducts")
+      .then((response) => {
+        setProducts(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  const history = useHistory();
+  const handleCardClick = (productItemId) => {
+    history.push(`/detail/${productItemId}`);
   };
   return (
     <>
       <Slider {...settings}>
-        {productItems.map((productItems) => {
+        {products.map((productItems) => {
           return (
-            <div className="box">
+            <div
+              className="box"
+              key={productItems}
+              onClick={() => handleCardClick(productItems.id)}
+            >
               <div className="product mtop">
                 <div className="img">
-                  <span className="discount">{productItems.discount}% Off</span>
-                  <img src={productItems.cover} alt="" />
+                  {/* <span className="discount">{productItems.discount}% Off</span> */}
+                  <img
+                    src={`data:image/png;base64,${productItems.image_medium}`}
+                    alt="image"
+                  />
                 </div>
                 <div className="product-details">
-                  <Link to="/detail">
-                    <h3>{productItems.name}</h3>
-                  </Link>
+                  <h3>{productItems.name}</h3>
+
                   <div className="price">
-                    <h4>{productItems.price}.00 DA</h4>
+                    {/* <h4>{productItems.price}.00 DA</h4> */}
                     <button onClick={() => addToCart(productItems)}>
                       <i className="fa fa-plus"></i>
                     </button>
@@ -65,6 +83,7 @@ const FlashCard = ({ productItems, addToCart }) => {
           );
         })}
       </Slider>
+      {/* <pre>{JSON.stringify(products, null, 2)}</pre> */}
     </>
   );
 };

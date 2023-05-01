@@ -78,9 +78,8 @@ export const AuthProvider = ({ children }) => {
     loginUser: loginUser,
     logoutUser: logoutUser,
   };
-
   useEffect(() => {
-    if (loading) {
+    if (loading && user) {
       updateToken();
     }
 

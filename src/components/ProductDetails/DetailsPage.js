@@ -1,16 +1,27 @@
-import React from "react";
 import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import Data from "../StockLimite/Data";
 import DetailsLivraison from "./LivraisonDetails";
-
+import axios from "axios";
 const DetailsPage = () => {
-  const { productItems } = Data;
-  let params = useParams();
-  const id = params.id;
+  const { productId } = useParams();
+  const [product, setProduct] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/products/getproduct/${productId}`)
+      .then((response) => {
+        setProduct(response.data);
+      })
+      .catch((error) => {
+        console.log("Erreur Axios:", error);
+      });
+  }, [productId]);
+  console.log(product);
   return (
     <section className="pagedetails">
-      {productItems.map((productItems, index) => {
+      <p>Oroduct Items</p>
+      {/* {productItems.map((productItems, index) => {
         return productItems.id == id ? (
           <div className="container d_flex" key={index}>
             <div className="productDetails d_flex ">
@@ -48,9 +59,9 @@ const DetailsPage = () => {
             </div>
           </div>
         ) : (
-          <div key={index}></div>
+          <div key={index}>No Data</div>
         );
-      })}
+      })} */}
     </section>
   );
 };

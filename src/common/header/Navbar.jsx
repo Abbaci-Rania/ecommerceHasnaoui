@@ -7,31 +7,9 @@ import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 const Navbar = ({ CartItem }) => {
   //userInfo
   const { user, logoutUser } = useContext(AuthContext);
-
-  // fixed Header
-  window.addEventListener("scroll", function () {
-    const navbar = document.querySelector(".navbar");
-    navbar.classList.toggle("active", window.scrollY > 100);
-  });
   const [open, setOpen] = useState(false);
-
   let menuRef = useRef();
-
-  useEffect(() => {
-    let handler = (e) => {
-      if (!menuRef.current.contains(e.target)) {
-        setOpen(false);
-        console.log(menuRef.current);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  });
-
   const [showMenu, setShowMenu] = useState(false);
-
   function handleClick() {
     setShowMenu(!showMenu);
   }
@@ -46,7 +24,7 @@ const Navbar = ({ CartItem }) => {
             </Link>
           </div>
 
-          <div className="menu-container" ref={menuRef}>
+          {/* <div className="menu-container" ref={menuRef}>
             <div
               className="categories"
               onClick={() => {
@@ -70,7 +48,7 @@ const Navbar = ({ CartItem }) => {
                 <Dropdown icon="fa fa-cogs" text={"Services"} />
               </ul>
             </div>
-          </div>
+          </div> */}
 
           <div className="search f_flex">
             <div className="search-bar">

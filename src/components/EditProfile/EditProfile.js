@@ -9,6 +9,12 @@ const EditProfile = () => {
   const email = user.email;
   const type = user.type;
   const [phone, setphone] = useState("");
+  const [street, setstreet] = useState("");
+  const [street2, setstreet2] = useState("");
+  const [state_id, setstate_id] = useState("");
+  const [localite_id, setlocalite_id] = useState("");
+  const [country_id, setcountry_id] = useState("");
+  const [zip, setzip] = useState("");
   const [redirect, setredirect] = useState(false);
 
   const submit = async (e) => {
@@ -20,6 +26,12 @@ const EditProfile = () => {
         name,
         email,
         phone,
+        street,
+        street2,
+        state_id,
+        localite_id,
+        country_id,
+        zip,
       }),
     });
     let data = await response.json();
@@ -54,35 +66,48 @@ const EditProfile = () => {
         <br />
         <input
           type="text"
-          name="adresse"
+          name="street"
           className="form-control"
           placeholder="Rue ..."
+          onChange={(e) => setstreet(e.target.value)}
         />
         <br />
         <input
           type="text"
-          name="adresse"
+          name="street2"
+          className="form-control"
+          placeholder="Rue ..."
+          onChange={(e) => setstreet2(e.target.value)}
+        />
+        <br />
+        <input
+          type="text"
+          name="state_id"
           className="form-control"
           placeholder="Wilaya "
+          onChange={(e) => setstate_id(e.target.value)}
         />{" "}
         <input
           type="text"
-          name="adresse"
+          name="localite_id"
           className="form-control"
           placeholder="Commune"
+          onChange={(e) => setlocalite_id(e.target.value)}
         />{" "}
         <input
           type="text"
-          name="adresse"
+          name="zip"
           className="form-control"
           placeholder="Code postal"
+          onChange={(e) => setzip(e.target.value)}
         />
         <br />
         <input
           type="text"
-          name="adresse"
+          name="country_id"
           className="form-control"
           placeholder="Pays"
+          onChange={(e) => setcountry_id(e.target.value)}
         />
         <br />
         {type === "groupe" ? (

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import axios from "axios";
 const SampleNextArrow = (props) => {
   const { onClick } = props;
   return (
@@ -34,21 +34,26 @@ const FlashCard = ({ productItems, addToCart }) => {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
-
+  const history = useHistory();
+  const handleCardClick = (productItemId) => {
+    history.push(`/detail/${productItemId}`);
+  };
   return (
     <>
       <Slider {...settings}>
         {productItems.map((productItems) => {
           return (
-            <div className="box">
+            <div
+              className="box"
+              key={productItems}
+              onClick={() => handleCardClick(productItems.id)}
+            >
               <div className="product mtop">
                 <div className="img">
                   <img src={productItems.cover} alt="" />
                 </div>
                 <div className="product-details">
-                  <Link to="/detail">
-                    <h3>{productItems.name}</h3>
-                  </Link>
+                  <h3>{productItems.name}</h3>
                   <h5>Quantité restante: {productItems.qtereste}</h5>
                   <div className="price">
                     <h4>{productItems.price}.00 DA</h4>

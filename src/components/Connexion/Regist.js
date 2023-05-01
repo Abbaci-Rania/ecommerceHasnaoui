@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
-import "./style.css";
-const Register = () => {
+import axios from "axios";
+
+const Regist = () => {
   const [name, setName] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -11,27 +11,56 @@ const Register = () => {
   const [is_client_groupe, setclientGroupe] = useState(false);
   const [redirect, setredirect] = useState(false);
 
-  const submit = async (e) => {
-    e.preventDefault();
-    await fetch("http://localhost:8000/users/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name,
-        email,
-        password,
-        phone,
-        is_client_groupe,
-        is_client_particulier,
-      }),
+  const handleChange = (e) => {
+    setData((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+      };
     });
-    setredirect(true);
   };
-  if (redirect) return <Redirect to="/connexion" />;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    data.client_type == "groupe"
+      ? setData((p) => {
+          return { ...p, is_client_groupe: true };
+        })
+      : setData((p) => {
+          return { ...p, is_client_particulier: true };
+        });
+    console.log(data);
+    data.password == data.passwordConf && setConfirm(true);
+
+    axios
+      .post(
+        "http://localhost:8000/users/register",
+        {
+          name,
+          email,
+          password,
+          phone,
+          is_client_groupe,
+          is_client_particulier,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+        setredirect(true);
+      })
+      .catch((error) => {
+        console.error("erreur dans register", error);
+      });
+  };
+  redirect && <Redirect to="/connexion" />;
 
   return (
     <div className="form">
-      <form className="form-signin" onSubmit={submit}>
+      <form className="form-signin" onSubmit={handleSubmit}>
         <h1 className="h3 mb-3 fw-normal">Creer votre compte</h1>
         <input
           type="text"
@@ -92,26 +121,5 @@ const Register = () => {
     </div>
   );
 };
-{
-  /* <input
-          type="radio"
-          id="admin"
-          name="is_admin"
-          value="is_admin"
-          onChange={(e) => setadmin(true)}
-        />
-          <label for="is_admin">admin</label>
-        <br /> {" "}
-        <input
-          type="radio"
-          id="comercial"
-          name="is_comercial"
-          value="is_comercial"
-          onChange={(e) => {
-            setcomercial(true);
-          }}
-        />
-         <label for="is_comercial">comercial</label>
-        <br /> {" "} */
-}
-export default Register;
+
+export default Regist;

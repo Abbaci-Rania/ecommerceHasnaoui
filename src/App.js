@@ -9,12 +9,9 @@ import Cart from "./common/Cart/Cart";
 import DetailsPage from "./components/ProductDetails/DetailsPage";
 import Login from "./components/Connexion/Login ";
 import Register from "./components/Connexion/Register";
-import PrivateRoute from "./utils/PrivateRoute";
 import { AuthProvider } from "./context/AuthProvider";
 import HeaderWrapper from "./common/header/HeaderWrapper";
 import EditProfile from "./components/EditProfile/EditProfile";
-import DashboardAdmin from "./admin/components/DashboardAdmin";
-import DashboardComercial from "./comercial/components/DashboardComercial";
 
 function App() {
   const { productItems } = Data;
@@ -64,7 +61,6 @@ function App() {
             <Route exact path="/connexion">
               <Login />
             </Route>
-
             <Route exact path="/register">
               <Register />
             </Route>
@@ -75,17 +71,11 @@ function App() {
                 decreaseQty={decreaseQty}
               />
             </Route>
-            <Route exact path="/detail/:id">
+            <Route exact path="/detail/:productId">
               <DetailsPage />
             </Route>
             <Route exact path="/edit">
               <EditProfile />
-            </Route>
-            <Route exact path="/admin">
-              <DashboardAdmin />
-            </Route>
-            <Route exact path="/comercial">
-              <DashboardComercial />
             </Route>
           </Switch>
           {/* <Footer /> */}
